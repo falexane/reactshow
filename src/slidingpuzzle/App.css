@@ -1,0 +1,28 @@
+.App {
+  background-color: silver;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 100px;
+}
+
+.pane {
+  width: 240px;
+  height: 240px;
+  margin: auto auto;
+  border: 5px solid blue;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tile {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  border: 1px solid #cccccc;
+  border-radius: 10%;
+  width: 60px;
+  height: 60px;
+}
