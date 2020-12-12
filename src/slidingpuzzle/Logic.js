@@ -20,20 +20,39 @@ const calcInversions = (array) => {
 
 /**
  * Create an array of ascending numbers. It represents the data of a "solved" sliding puzzle with dimensions "count x count". e.g. For a 3x3 sliding puzzle it creates an array "[1,2,3,4,5,6,7,8,0]". The last "0" represent a blank cell. 
- * @param {number} count the count of tiles per dimension
+ * @param {number} N the count of tiles per dimension
  * @returns {number[]} an array of numbers
  */
-const createSeries = (count) => {
-  const length = count * count
+const createSeries = (N) => {
+  const length = N * N
   const array = Array.from({length: length}, (element, index) => (index + 1) % length)
 
   return array
+}
+
+const findIndexBlank = (array) => {
+  return array.indexOf(0)
 }
 
 const getRowIndexOfBlank = (array, N) => {
   const indexOfBlank = array.indexOf(0)
   if (indexOfBlank === -1) throw new Error('Invalid puzzle data')
   return Math.floor(indexOfBlank / N)
+}
+
+const isAdjacent = (index1, index2, N) => {
+  console.log('[blank], [target], N ', index1, index2, N);
+/*   return (
+      ((index1 % N) === (index2 % N)) &&
+      (Math.abs(Math.floor(index1 / N) - Math.floor(index2 / N)) === 1)
+    ) || 
+    (
+      (Math.floor(index1 / N) === Math.floor(index2 / N)) &&
+      (Math.abs((index1 % N) - (index2 % N)) === 1)
+    ) */
+  
+  const space = Math.abs(index1 - index2)
+  return space === 1 || space === N
 }
 
 /**
@@ -44,14 +63,14 @@ const getRowIndexOfBlank = (array, N) => {
  */
 const makeSolvable = (array, N) => {
   const inversions = calcInversions(array)
-  console.log('inversions = ', inversions)
-  console.log('adjust...')
+  // console.log('inversions = ', inversions)
+  // console.log('adjust...')
   
   if (N % 2 === 1) {
     if (inversions % 2 === 1) adjustInversions(array)
   } else {
     const RowIndexOfBlank = getRowIndexOfBlank(array, N)
-    console.log('RowIndexOfBlank = ', RowIndexOfBlank)
+    // console.log('RowIndexOfBlank = ', RowIndexOfBlank)
     if (inversions % 2 === 1) {
       if (RowIndexOfBlank % 2 === 1) adjustInversions(array)
     } else {
@@ -59,14 +78,14 @@ const makeSolvable = (array, N) => {
     }
   }
 
-  console.log('array = ', array)
-  console.log('inversions = ', calcInversions(array))
+  // console.log('array = ', array)
+  // console.log('inversions = ', calcInversions(array))
 }
 
 const newPuzzle = (N) => {
   const array = createSeries(N)
   shuffle(array)
-  console.log('array = ', array)
+  // console.log('array = ', array)
   makeSolvable(array, N)
   return array
 }
@@ -92,4 +111,8 @@ export {
   createSeries, 
   newPuzzle,
   calcInversions,
+  shuffle,
+  findIndexBlank,
+  isAdjacent,
+  swap
 }
