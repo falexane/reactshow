@@ -1,62 +1,7 @@
-/* :root {
-  --field-length: 240px;
-  --N: 4;
-} */
-
 .App {
   background-color: silver;
   width: 100vw;
   height: 100vh;
   padding-top: 100px;
-  position: relative;
-}
-
-.checkerboard {
-  --N: 5;
-  --field-length: 300px;
-  --font-size: 12rem;
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  width: var(--field-length);
-  height: var(--field-length);
-  margin: auto auto;
-  padding: 0px;
-  border: 5px solid blue;
-  background-color: white;
-}
-
-.tile-seat, .tile {
-  box-sizing: border-box;
-}
-
-.tile-seat {
-  /* flex-grow: 1; */
-  width: calc(var(--field-length) / var(--N));
-  height: calc(var(--field-length) / var(--N));
-  /* margin: 0px 0px; */
-  border: 1px solid red;
-}  
-
-.tile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #cccccc;
-  border-radius: 10%;
-  width: calc(var(--field-length) / var(--N));
-  height: calc(var(--field-length) / var(--N));
-  font-size: calc(var(--font-size) / var(--N));
-  transition: top 0.5s, left 0.5s/* , width 0.5s, height 0.5s */ ease-out;
-  /* transition: all 0.5s ease-out; */
-  cursor: pointer;
-  position: absolute;
-  /* overflow: hidden; */
-}
-
-button {
-  /* display: block; */
-  margin: 10px 10px;
-  width: 100px;
-  height: 50px;
+  /* position: relative; */
 }

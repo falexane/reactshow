@@ -30,6 +30,20 @@ const createSeries = (N) => {
   return array
 }
 
+const easyPuzzle = (N) => {
+  switch (N) {
+    case 3:
+      // return [2, 3, 6, 1, 0, 5, 4, 7, 8]
+      return [1, 2, 3, 4, 5, 6, 0, 7, 8]
+    case 4:
+      return [5, 1, 7, 3, 9, 2, 11, 4, 13, 6, 15, 8, 0, 10, 14, 12]
+    case 5:
+      return [6, 1, 3, 4, 5, 11, 2, 7, 9, 10, 12, 17, 8, 13, 15, 18, 0, 23, 14, 19, 16, 21, 22, 24, 20]
+    default:
+      return [1, 2, 3, 4, 5, 6, 0, 7, 8]
+  }
+}
+
 const findIndexBlank = (array) => {
   return array.indexOf(0)
 }
@@ -41,18 +55,24 @@ const getRowIndexOfBlank = (array, N) => {
 }
 
 const isAdjacent = (index1, index2, N) => {
-  console.log('[blank], [target], N ', index1, index2, N);
-/*   return (
+  // console.log('[blank], [target], N ', index1, index2, N);
+  return (
       ((index1 % N) === (index2 % N)) &&
       (Math.abs(Math.floor(index1 / N) - Math.floor(index2 / N)) === 1)
     ) || 
     (
       (Math.floor(index1 / N) === Math.floor(index2 / N)) &&
       (Math.abs((index1 % N) - (index2 % N)) === 1)
-    ) */
-  
-  const space = Math.abs(index1 - index2)
-  return space === 1 || space === N
+    )
+}
+
+const isSolved = (array) => {
+  const last = array.length -1
+  if (array[last] !== 0) return false
+  for (let i = last - 1;  i >= 0;  i--) {
+    if (array[i] !== i + 1) return false    
+  }
+  return true
 }
 
 /**
@@ -109,10 +129,12 @@ const swap = (array, index1, index2) => {
 
 export {
   createSeries, 
-  newPuzzle,
   calcInversions,
-  shuffle,
+  easyPuzzle,
   findIndexBlank,
   isAdjacent,
-  swap
+  isSolved,
+  newPuzzle,
+  shuffle,
+  swap,
 }
