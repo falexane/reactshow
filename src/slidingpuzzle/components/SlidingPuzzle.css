@@ -16,20 +16,12 @@
   margin: auto auto;
   padding: 0px;
   border: 5px solid blue;
-  background-color: white;
+  background-color: whitesmoke;
+  overflow: hidden;
 }
-
-/* .controls {
-  
-} */
 
 .anchor, .tile {
   box-sizing: border-box;
-}
-
-.anchor {
-  /* opacity: 1; */
-  /* transition: opacity 1.5s ease-out; */
 }
 
 .tile {
@@ -39,8 +31,7 @@
   border: 1px solid #cccccc;
   border-radius: 10%;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: top 0.2s, left 0.2s, width 0.5s, height 0.5s, opacity 1.5s ease-out;
-  /* transition: all 0.5s ease-out; */
+  transition: top 0.2s, left 0.2s, width 0.5s, height 0.5s ease-out;
   cursor: pointer;
   position: absolute;
 }
@@ -50,7 +41,6 @@
 }
 
 button {
-  /* display: block; */
   margin: 10px 10px;
   width: 100px;
   height: 50px;

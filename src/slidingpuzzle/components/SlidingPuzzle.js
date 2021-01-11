@@ -2,8 +2,8 @@ import React, {useState, useEffect, useRef} from 'react'
 import Tile from './Tile'
 import * as Logic from '../Logic'
 
-const edgeLength = 300
-const fontSizeBase =  12
+const edgeLength = Logic.edgeLength
+const fontSizeBase = Logic.fontSizeBase
 
 const SlidingPuzzle = ({N = 3}) => {
   // create number series of a 3x3 sliding puzzle by default
@@ -21,7 +21,7 @@ const SlidingPuzzle = ({N = 3}) => {
     height: `${edgeLength / n.current}px`
   }
   const tileStyle = {
-    // ...anchorStyle,
+    ...anchorStyle,
     fontSize: `${fontSizeBase / n.current}rem`
   }
   
@@ -71,7 +71,8 @@ const SlidingPuzzle = ({N = 3}) => {
                 onClick={(isSolved.current)? null : inverse} 
                 face={(value === 0)? series.length : value} 
                 anchorStyle={/* (value === 0)? {...anchorStyle, opacity: 0} : */ anchorStyle} 
-                tileStyle={(value === 0)? {...tileStyle, opacity: 0} : tileStyle} 
+                /* tileStyle={(value === 0)? {...tileStyle, opacity: 0} : tileStyle} */ 
+                tileStyle={tileStyle} 
                 isSolved={isSolved.current}
               />
               )

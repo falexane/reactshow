@@ -1,3 +1,6 @@
+const edgeLength = 300
+const fontSizeBase =  12
+
 const adjustInversions = (array) => {
   const length = array.length
   if (array[length - 1] === 0) swap(array, length - 2, length - 3)
@@ -128,6 +131,8 @@ const swap = (array, index1, index2) => {
 
 
 export {
+  edgeLength,
+  fontSizeBase,
   createSeries, 
   calcInversions,
   easyPuzzle,
