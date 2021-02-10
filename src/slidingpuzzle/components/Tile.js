@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import * as Logic from '../Logic'
 
-const Tile = ({value, index, N, onClick, face, anchorStyle, tileStyle, isSolved}) => {
+const Tile = ({value, index, N, onClick, face, anchorStyle, tileStyle, isSolved, lock}) => {
   // const [index/* , setIndex */] = useState(props.index)
   const anchorRef = useRef(null)
   const tileRef = useRef(null)
@@ -27,12 +27,16 @@ const Tile = ({value, index, N, onClick, face, anchorStyle, tileStyle, isSolved}
       // tileRef.current.classList.add('invisible')
       // tileRef.current.classList.remove('invisible')
     }
-    if (value === 0 ) console.log('value, face, index, isSolved, tileStyle = ', value, face, index, isSolved, tileStyle);
+    // if (value === 0 ) console.log('value, face, index, isSolved, tileStyle = ', value, face, index, isSolved, tileStyle);
+
     if (isSolved) setTimeout(() => {
       tileRef.current.style.top = `${anchorRect.top - baseRect.top - 80}px`
     }, 800 + 100 * value)
     if (isSolved) setTimeout(() => {
       tileRef.current.style.top = `${Logic.edgeLength}px`
+      if (value === 0) setTimeout(() => {
+        lock(false)
+      }, 1000 + 250 * N * N);
     }, 1000 + 250 * value)
   }/* , [index, N] */)
 

@@ -16,7 +16,7 @@
   margin: auto auto;
   padding: 0px;
   border: 5px solid blue;
-  background-color: whitesmoke;
+  background-color: #ccc;
   overflow: hidden;
 }
 
@@ -25,23 +25,50 @@
 }
 
 .tile {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid #cccccc;
   border-radius: 10%;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:#77b;
+  background-color: white;
+  text-shadow: -1px -1px 0px #000, 1px 1px 0px white;
+  box-shadow: inset 0px 0px 0px 1px #ccc, inset -5px -3px 8px 0px gray;
   transition: top 0.2s, left 0.2s, width 0.5s, height 0.5s ease-out;
   cursor: pointer;
-  position: absolute;
+}
+
+.button {
+  display: inline-block;
+  width: 80px;
+  /* height: 50px; */
+  margin: 18px 2px;
+  /* border: 1px solid #000; */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 24pt;
+  font-style: italic;
+  color: deepskyblue;
+  text-shadow: -1px -1px 1px #fff, 1px 1px 1px #444;
+  transform: rotate(-25deg);
+  cursor: pointer;
+}
+
+.button:hover {
+  filter: drop-shadow(10px 20px 4px skyblue);
+}
+
+.button:active {
+  transform: rotate(-15deg) translateY(3px);
+  filter: drop-shadow(5px 12px 2px crimson);
 }
 
 .invisible {
   opacity: 0;
 }
 
-button {
-  margin: 10px 10px;
-  width: 100px;
-  height: 50px;
+.inactive {
+  pointer-events: none;
 }
+
